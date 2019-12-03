@@ -9,3 +9,4 @@
 <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/pages/fornecedor/fornecedor_incluir.js"></script>
 <script src="dist/js/viacep.js"></script>
+<script src="dist/js/funcao.js"></script>

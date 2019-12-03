@@ -71,14 +71,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         echo "<tr>
                                               <td>".$categoria['id_categoria']."</td>
                                               <td>".$categoria['nome']."</td>
-                                              <td></td>
+                                              <td>".($categoria['status'] == 'ATIVO' ?  "<span class='badge badge-success'>ATIVO</span>" : "<span class='badge badge-danger'>INATIVO</span>" )."</td>
                                               <td></td>
                                               </tr>";
+                                               
                                       }
 
                                       //var_dump($listaCategorias);
                                     ?>
-                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -95,6 +95,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <?php require_once ("dist/js/javaScript.php"); ?>
+
+
 </body>
 
 </html>
