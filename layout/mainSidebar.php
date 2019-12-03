@@ -58,10 +58,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="categorias_eventos.php" class="nav-link <?php echo((basename($_SERVER['SCRIPT_NAME']) == 'categorias_eventos.php' ? 'active' : '' ));?>">
+                            <a href="categorias.php" class="nav-link <?php echo((basename($_SERVER['SCRIPT_NAME']) == 'categorias.php' ? 'active' : '' ));?>">
                                 <i class="far fa-bookmark nav-icon"></i>
                                 
-                                <p>Categorias Eventos</p>     
+                                <p>Categorias</p>     
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="subcategorias.php" class="nav-link <?php echo((basename($_SERVER['SCRIPT_NAME']) == 'subcategorias.php' ? 'active' : '' ));?>">
+                                <i class="far fa-bookmark nav-icon"></i>
+                                
+                                <p>Subcategorias</p>     
                             </a>
                         </li>
                     </ul>

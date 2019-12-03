@@ -4,6 +4,10 @@
     //print_r(realpath(dirname(__FILE__,2).'/env_dev.ini' ));
     //print_r(parse_ini_file(realpath(dirname(__FILE__,2).'/env_dev.ini' )));
     class Database{
+
+        public function _construct(){
+            getConection();
+        }
         
         public static function getConection(){
             //Primeiro. pego o caminho de configuração Env
