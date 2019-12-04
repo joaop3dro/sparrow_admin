@@ -67,7 +67,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="subcategorias.php" class="nav-link <?php echo((basename($_SERVER['SCRIPT_NAME']) == 'subcategorias.php' ? 'active' : '' ));?>">
+                            <a href="subcategoria.php" class="nav-link <?php echo((basename($_SERVER['SCRIPT_NAME']) == 'subcategorias.php' ? 'active' : '' ));?>">
                                 <i class="far fa-bookmark nav-icon"></i>
                                 
                                 <p>Subcategorias</p>     

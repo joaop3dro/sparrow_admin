@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Categorias de Eventos</li>
+                                <li class="breadcrumb-item active">Subcategorias de Eventos</li>
                             </ol>
                         </div>
                     </div>
@@ -99,16 +99,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                         <tbody>
                                             <?php                                    
-                                      require_once realpath(dirname(__FILE__).'/src/models/categoriaModel.php');
+                                      require_once realpath(dirname(__FILE__).'/src/models/subcategoriaModel.php');
                                       $listaCategorias = categoriaModel::ListarTodos();
                                       
-                                      foreach ($listaCategorias as $categoria){
+                                      foreach ($listaCategorias as $subcategoria){
                                         //var_dump($categoria);
                                         echo "<tr>
-                                              <td>".$categoria['id_categoria']."</td>
-                                              <td>".$categoria['nome']."</td>
-                                              <td>".($categoria['status'] == 'ATIVO' ?  "<span class='badge badge-success'>ATIVO</span>" : "<span class='badge badge-danger'>INATIVO</span>" )."</td>
-                                              <td><div class='btn-group mr-2' role='group' aria-label='Segundo grupo'>
+                                              <td>".$subcategoria['id_subcategoria']."</td>
+                                              <td>".$subcategoria['id_categoria']."</td>
+                                              <td>".$subcategoria['nome']."</td>
+                            
                                               <button type='submit' class='btn btn-primary' data-toggle='modal' data-target='#updateModal'>Editar</button>
                                               <button type='button' class='btn btn-secondary'>Excluir</button>
                                             </div></td>
