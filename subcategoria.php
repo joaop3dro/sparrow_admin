@@ -2,7 +2,7 @@
     require_once realpath(dirname(__FILE__).'/src/models/subcategoriaModel.php');
     require_once realpath(dirname(__FILE__).'/src/models/categoriaModel.php');
 
-
+    $categoriasAtivas = CategoriaModel::ListarAtivos();
 
 
 
@@ -70,20 +70,20 @@
                                                                 <div class="form-group">
                                                                     <label>Nova Subcategoria</label>
                                                                     <input class="form-control" type="text"
-                                                                        name="txtNomeCategoria" required>
+                                                                        name="txtNomeSubCategoria" required>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <select class="form-control">
+                                                                    <select class="form-control" name="categoriaId" >
                                                                         <?php
                                                                         
                                                                        
-                                                                        $categoriasAtivas = CategoriaModel::ListarAtivos();
-                                                                                foreach($categoriasAtivas as $idcategoria){
-                                                                                    echo"<option value=".$idcategoria['id_categoria'].">".$idcategoria['nome']."</option>";
+                                                                        
+                                                                                foreach($categoriasAtivas as $idcategoria ){
+                                                                                    echo"<option  value=".$idcategoria['id_categoria'].">".$idcategoria['nome']."</option>";
                                                                                 }
                                                                                                 ?>
 

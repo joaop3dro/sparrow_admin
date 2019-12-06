@@ -21,17 +21,19 @@ class SubCategoriaModel
     {
          var_dump($dados);
         $conexao = Database::getConection();
-        $dadosDoBanco = $dados['txtNomeCategoria'];
-        $comandoSQL = $conexao->prepare("INSERT INTO subcategorias (nome) VALUES (?)"); // para cada interroção é um campo do meu banco de dados
+        $nomeSubcategoria = $dados['txtNomeSubCategoria'];
+        $idCategoria = $dados['categoriaId'];
+        $comandoSQL = $conexao->prepare("INSERT INTO subcategorias (nome, id_categoria) VALUES (?,?)"); // para cada interroção é um campo do meu banco de dados
         //Mescla o valor da variavel la no comando SQL Prepare onde você colocou a '?'
-        $comandoSQL->bind_param('s', $dadosDoBanco); // forma mais segura de fazer S= string, I= integer ...
+        $comandoSQL->bind_param('si', $nomeSubcategoria,$idCategoria);
+         // forma mais segura de fazer S= string, I= integer ...
         //Grava no banco
 
         $comandoSQL->execute();
         var_dump($comandoSQL);
         if ($comandoSQL->affected_rows > 0) {
            // $id = mysqli_stmt_insert_id($comandoSQL);
-           header('Location: subcategorias.php');
+           header('Location: subcategoria.php');
             return $id;
         } else {
             return "Erro ao gravar no banco de dados";
