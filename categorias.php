@@ -1,3 +1,4 @@
+<?php require_once realpath(dirname(__FILE__).'/src/models/categoriaModel.php'); ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -75,9 +76,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" name="inset" class="btn btn-primary">Salvar</button>
+                                                        <button type="submit" name="inset"
+                                                            class="btn btn-primary">Salvar</button>
                                                         <button type="button" data-dismiss="modal"
                                                             class="btn btn-secondary">Fechar</button>
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -86,7 +89,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body p-0">
-                                    <table class="table table-striped" method="POST">
+                                    <table class="table table-striped" method="POST" id="tabelacategoria">
                                         <input type="hidden" name="acao" value="update">
                                         <thead>
                                             <tr>
@@ -99,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                         <tbody>
                                             <?php                                    
-                                      require_once realpath(dirname(__FILE__).'/src/models/categoriaModel.php');
+                                      
                                       $listaCategorias = categoriaModel::ListarTodos();
                                       
                                       foreach ($listaCategorias as $categoria){
@@ -109,8 +112,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                               <td>".$categoria['nome']."</td>
                                               <td>".($categoria['status'] == 'ATIVO' ?  "<span class='badge badge-success'>ATIVO</span>" : "<span class='badge badge-danger'>INATIVO</span>" )."</td>
                                               <td><div class='btn-group mr-2' role='group' aria-label='Segundo grupo'>
-                                              <button type='submit' class='btn btn-primary' data-toggle='modal' data-target='#updateModal'>Editar</button>
-                                              <button type='button' class='btn btn-secondary'>Excluir</button>
+                                              <button type='submit' class='btn btn-primary' data-target='#updateModal' data-toggle='tooltip modal' data-placement='top' title='Editar'><i class='fas fa-edit'></i></button>
+                                              <button type='button' class='btn btn-secondary'data-toggle='tooltip' data-placement='top' title='Excluir'><i class='fas fa-trash-alt'></i></button>
                                             </div></td>
                                               </tr>";                                               
                                       }
@@ -125,7 +128,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                 Categoria
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Fechar">
-                                                                    
+
                                                                 </button>
                                                         </div>
                                                         <form method="POST">
@@ -135,14 +138,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label>Atualizar</label>
-                                                                            <input class="form-control" type="text" name="txtAtualizarCategoria" required>
+                                                                            <input class="form-control" type="text"
+                                                                                name="txtAtualizarCategoria" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="submit" name="update" class="btn btn-primary">Salvar</button>
+                                                                <button type="submit" name="update"
+                                                                    class="btn btn-primary">Salvar</button>
                                                                 <button type="button" data-dismiss="modal"
                                                                     class="btn btn-secondary">Fechar</button>
                                                             </div>
@@ -166,6 +171,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <?php require_once ("dist/js/javaScript.php"); ?>
+        <script>
+    $(document).ready(function() {
+        $('#tabelacategoria').DataTable({
+            "oLanguage" : {
+                "sUrl": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese.json"
+            }
+        });
+    })
+        $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+        </script>
+        
+        
 
 
 </body>
