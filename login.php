@@ -1,3 +1,24 @@
+<?php
+ require_once realpath(dirname(__FILE__).'/src/models/loginModel.php');
+
+  if(isset($_POST['inputEmail']) and isset($_POST['inputSenha'])){
+    $login = LoginModel::logar($_POST);
+
+      if($login->num_rows == 1){
+        $resultado = mysqli_fetch_assoc($login);
+        
+
+        session_start();
+        $_SESSION['primeiro_nome'] = $resultado['primeiro_nome'];
+        $_SESSION['segundo_nome'] = $resultado['segundo_nome'];
+        $_SESSION['logado'] = true;
+
+        header('Location: index.php');
+      }
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

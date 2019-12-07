@@ -1,0 +1,202 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 07-Dez-2019 às 01:19
+-- Versão do servidor: 10.4.6-MariaDB
+-- versão do PHP: 7.3.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `sparrow`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id_categoria` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `status` varchar(7) DEFAULT 'ATIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`id_categoria`, `nome`, `status`) VALUES
+(85, 'Desenvolvimento Web', 'ATIVO'),
+(86, 'Desenvolvimento Desktop', 'ATIVO'),
+(87, 'Deep Web', 'ATIVO'),
+(88, 'Infraestrutura', 'ATIVO');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `id_evento` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descricao` varchar(200) NOT NULL,
+  `conteudo` mediumtext NOT NULL,
+  `Id_categoria` int(11) NOT NULL,
+  `id_subcategoria` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `eventos`
+--
+
+INSERT INTO `eventos` (`id_evento`, `titulo`, `descricao`, `conteudo`, `Id_categoria`, `id_subcategoria`) VALUES
+(1, 'Novidade do PHP 7.3', 'O PHP 7.3 é muito top', 'CONTEUDO', 1, 1),
+(2, 'Novidade do HTML5', 'Esta é a descrição do HTML5', 'CONTEUDO', 3, 1),
+(3, 'PADRÃO E-MAG', 'Criando SITES para cego ver', 'CONTEUDO', 2, 1),
+(4, 'SERVIDOR HTTP NO WINDOWS', 'Conheça o IIS', 'CONTEUDO', 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `subcategorias`
+--
+
+CREATE TABLE `subcategorias` (
+  `id_subcategoria` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `nome` varchar(150) NOT NULL,
+  `status` varchar(7) DEFAULT 'ATIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `subcategorias`
+--
+
+INSERT INTO `subcategorias` (`id_subcategoria`, `id_categoria`, `nome`, `status`) VALUES
+(44, 86, 'Delphi', 'ATIVO'),
+(45, 85, 'HTML,CSS,PHP,JS', 'ATIVO'),
+(46, 87, 'Pen test', 'ATIVO'),
+(47, 88, 'redes', 'ATIVO');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
+  `primeiro_nome` varchar(15) NOT NULL,
+  `segundo_nome` varchar(250) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `senha` varchar(100) NOT NULL,
+  `situacao` varchar(7) NOT NULL DEFAULT 'Ativo',
+  `data_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
+  `data_atualizacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `cpf`, `primeiro_nome`, `segundo_nome`, `email`, `senha`, `situacao`, `data_criacao`, `data_atualizacao`) VALUES
+(1, '162.141.697-61', 'João Pedro', 'Barbosa Alves', 'joaopedro@gmail.com.br', '123456', 'Ativo', '2019-11-19 23:08:21', '2019-11-20 00:02:27');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id_categoria`);
+
+--
+-- Índices para tabela `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`id_evento`),
+  ADD KEY `Id_categoria` (`Id_categoria`),
+  ADD KEY `id_subcategoria` (`id_subcategoria`);
+
+--
+-- Índices para tabela `subcategorias`
+--
+ALTER TABLE `subcategorias`
+  ADD PRIMARY KEY (`id_subcategoria`),
+  ADD KEY `id_categoria` (`id_categoria`);
+
+--
+-- Índices para tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `cpf` (`cpf`);
+ALTER TABLE `usuarios` ADD FULLTEXT KEY `primeiro_nome` (`primeiro_nome`);
+ALTER TABLE `usuarios` ADD FULLTEXT KEY `segundo_nome` (`segundo_nome`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+
+--
+-- AUTO_INCREMENT de tabela `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `subcategorias`
+--
+ALTER TABLE `subcategorias`
+  MODIFY `id_subcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `eventos`
+--
+ALTER TABLE `eventos`
+  ADD CONSTRAINT `fk_id_categoria` FOREIGN KEY (`Id_categoria`) REFERENCES `categorias` (`id_categoria`),
+  ADD CONSTRAINT `fk_id_subcategoria_evento` FOREIGN KEY (`id_subcategoria`) REFERENCES `subcategorias` (`id_subcategoria`);
+
+--
+-- Limitadores para a tabela `subcategorias`
+--
+ALTER TABLE `subcategorias`
+  ADD CONSTRAINT `fk_id_categoria_subcategoria` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
