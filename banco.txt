@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Dez-2019 às 01:19
--- Versão do servidor: 10.4.6-MariaDB
--- versão do PHP: 7.3.9
+-- Tempo de geraï¿½ï¿½o: 07-Dez-2019 ï¿½s 01:19
+-- Versï¿½o do servidor: 10.4.6-MariaDB
+-- versï¿½o do PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -64,10 +64,10 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`id_evento`, `titulo`, `descricao`, `conteudo`, `Id_categoria`, `id_subcategoria`) VALUES
-(1, 'Novidade do PHP 7.3', 'O PHP 7.3 é muito top', 'CONTEUDO', 1, 1),
-(2, 'Novidade do HTML5', 'Esta é a descrição do HTML5', 'CONTEUDO', 3, 1),
-(3, 'PADRÃO E-MAG', 'Criando SITES para cego ver', 'CONTEUDO', 2, 1),
-(4, 'SERVIDOR HTTP NO WINDOWS', 'Conheça o IIS', 'CONTEUDO', 5, 1);
+(1, 'Novidade do PHP 7.3', 'O PHP 7.3 ï¿½ muito top', 'CONTEUDO', 1, 1),
+(2, 'Novidade do HTML5', 'Esta ï¿½ a descriï¿½ï¿½o do HTML5', 'CONTEUDO', 3, 1),
+(3, 'PADRï¿½O E-MAG', 'Criando SITES para cego ver', 'CONTEUDO', 2, 1),
+(4, 'SERVIDOR HTTP NO WINDOWS', 'Conheï¿½a o IIS', 'CONTEUDO', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -115,20 +115,20 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `cpf`, `primeiro_nome`, `segundo_nome`, `email`, `senha`, `situacao`, `data_criacao`, `data_atualizacao`) VALUES
-(1, '162.141.697-61', 'João Pedro', 'Barbosa Alves', 'joaopedro@gmail.com.br', '123456', 'Ativo', '2019-11-19 23:08:21', '2019-11-20 00:02:27');
+(1, '162.141.697-61', 'Joï¿½o Pedro', 'Barbosa Alves', 'joaopedro@gmail.com.br', '123456', 'Ativo', '2019-11-19 23:08:21', '2019-11-20 00:02:27');
 
 --
--- Índices para tabelas despejadas
+-- ï¿½ndices para tabelas despejadas
 --
 
 --
--- Índices para tabela `categorias`
+-- ï¿½ndices para tabela `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Índices para tabela `eventos`
+-- ï¿½ndices para tabela `eventos`
 --
 ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id_evento`),
@@ -136,14 +136,14 @@ ALTER TABLE `eventos`
   ADD KEY `id_subcategoria` (`id_subcategoria`);
 
 --
--- Índices para tabela `subcategorias`
+-- ï¿½ndices para tabela `subcategorias`
 --
 ALTER TABLE `subcategorias`
   ADD PRIMARY KEY (`id_subcategoria`),
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- Índices para tabela `usuarios`
+-- ï¿½ndices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
@@ -180,7 +180,7 @@ ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- Restrições para despejos de tabelas
+-- Restriï¿½ï¿½es para despejos de tabelas
 --
 
 --
@@ -200,3 +200,75 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+<?php
+ require_once realpath(dirname(__FILE__).'/src/models/loginModel.php');
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Sparrow Admin | Login</title>
+    <?php require_once("dist/css/css.php"); ?>
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <b>Sparrow</b>Admin</a>
+  </div>
+
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Gerenciador web do Sparrow Events</p>
+
+      <form id="formLogin" method="post">
+        <input type="hidden" name="acao" value="logar">
+        <div class="input-group mb-3">
+          <input name="inputEmail" id="inputEmail" type="email" class="form-control" placeholder="Email" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input name="inputSenha" id="inputSenha" type="password" class="form-control" placeholder="Password" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Lembre me
+              </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <button type="submit"   class="btn btn-success">
+                <span class="spinner-border text-light"></span>Entrar
+            </button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+
+<?php require_once ("dist/js/javaScript.php"); ?>
+<script src="dist/js/services/loginService.js"></script>
+</body>
+</html>

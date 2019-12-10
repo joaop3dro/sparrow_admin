@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/joaop3dro/sparrow_admin/issues"
   },
-  "homepage": "https://github.com/joaop3dro/sparrow_admin#readme"
+  "homepage": "https://github.com/joaop3dro/sparrow_admin#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }

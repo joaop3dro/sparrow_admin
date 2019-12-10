@@ -15,10 +15,10 @@ class LoginModel{
             $_SESSION['primeiro_nome'] = $usuario['primeiro_nome'];
             $_SESSION['segundo_nome'] =  $usuario['segundo_nome'];
             $_SESSION['logado'] = "sim";
-            //$msg = array('logado' => true, 'mensagem' => 'Logado com sucesso!');
-            //echo json_encode($msg, JSON_PRETTY_PRINT);
-            //exit();
-            header('Location: index.php');
+            $msg = array('logado' => true, 'mensagem' => 'Logado com sucesso!');
+            echo json_encode($msg, JSON_PRETTY_PRINT);
+            exit();
+            //header('Location: index.php');
         } else{
             $msg = array('logado' => false, 'mensagem' => 'Dados não encontrados!');
             echo json_encode($msg, JSON_PRETTY_PRINT);

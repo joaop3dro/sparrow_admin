@@ -1,5 +1,10 @@
-<?php require_once realpath(dirname(__FILE__).'/src/models/categoriaModel.php'); 
-session_start();
+<?php 
+require_once realpath(dirname(__FILE__).'/src/models/categoriaModel.php'); 
+require_once realpath(dirname(__FILE__).'/src/models/loginModel.php');
+  session_start(); // Obrigatoriamente abrir um start
+  //session_destroy();
+  LoginModel:: verificaSeLogado();
+  //var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <!--
