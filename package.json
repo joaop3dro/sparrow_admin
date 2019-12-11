@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/joaop3dro/sparrow_admin#readme",
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "sweetalert2": "^9.5.3",
+    "toastr": "^2.1.4"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2"
   }
 }

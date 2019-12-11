@@ -176,6 +176,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- JavaScript -->
     <?php require_once ("dist/js/javaScript.php"); ?>
     <script src="dist/js/MyInputMask.js"></script>
+    <script src="dist/js/pages/fornecedor/fornecedor_incluir.js"></script>
 
 </body>
 
