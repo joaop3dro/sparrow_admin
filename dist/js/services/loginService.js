@@ -3,9 +3,9 @@ $('#formLogin').on("submit", function (event) {
     event.preventDefault();
     console.log(('#formLogin').serialize());
     $.ajax({
-        url: "logins.php",
+        url: "login.php",
         method: "POST",
-        data: $('#formLogin').serialize(),
+        data: $('formLogin').serialize(),
         beforeSend: function () {
             $("#btnLogin").html('<span class="spinner-border spinner-border-sm"></span> aguarde...');
         },

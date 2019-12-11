@@ -13,7 +13,6 @@
 <script src="node_modules/toastr/build/toastr.min.js"></script>
 
 
-
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 

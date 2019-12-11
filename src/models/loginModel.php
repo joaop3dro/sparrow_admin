@@ -1,6 +1,7 @@
 <?php
 require_once realpath(dirname(__FILE__,2).'/config/config.php');
 class LoginModel{
+    
     public static function logar($email, $senha){
         session_start();
         $conexao = Database::getConection();
@@ -36,10 +37,10 @@ class LoginModel{
             header('Location: login.php');
         }
     }
-
     public static function verficarOrigemRequisicao(){
         // Verifica se a origem da requisição é do mesmo domínio da aplicação
-        if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != "http://localhost/sparrow_admin/login.php"):
+        
+        if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != "http://localhost/sparrow-admin/login.php"):
             $retorno = array('codigo' => 666, 'mensagem' => 'Sai demoinnn');
             echo json_encode($retorno);
             exit();
@@ -47,7 +48,6 @@ class LoginModel{
     }
 }
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-   
     LoginModel::verficarOrigemRequisicao();
     //verifica se uma acao definida
     $acao = (isset($_POST['acao'])? $_POST['acao'] : "");

@@ -1,6 +1,5 @@
 <?php
     require_once realpath(dirname(__FILE__).'/src/models/LoginModel.php');
-   //Faz o encaminhamento do POST ou GET
 ?>
 
 <!DOCTYPE html>
@@ -72,5 +71,3 @@
     <script src="dist/js/services/loginService.js"></script>
 
 </body>
-
-</html>
